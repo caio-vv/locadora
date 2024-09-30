@@ -1,16 +1,16 @@
-import jwtService from "../services/jwt-service"
+import jwtService from "../services/jwt-service.js";
 
 const jwtAuth = (req, res, next) => {
-    try {
-        const token = req.headers.authorization.split(" ")[1];
-        if(jwtService.verifyAccesToken(token))   { 
-            next()
-        } else {
-            throw new Error("")
-        }
-    } catch (error) {
-        res.sendStatus(401);
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    if (jwtService.verifyAccessToken(token)) {
+      next();
+    } else {
+      throw new Error("");
     }
-}
+  } catch (error) {
+    res.sendStatus(401);
+  }
+};
 
-export default jwtAuth
+export default jwtAuth;
